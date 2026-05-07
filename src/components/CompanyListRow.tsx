@@ -10,7 +10,7 @@ interface Props {
 }
 
 const CompanyListRow: React.FC<Props> = ({ company, animationDelay, onClick }) => {
-  const { name, industry, location, country, employees, revenue, status, logo } = company;
+  const { name, industry, location, country, employees, revenue, status } = company;
 
   return (
     <div

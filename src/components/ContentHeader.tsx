@@ -17,9 +17,7 @@ interface ContentHeaderProps {
 }
 
 const ContentHeader: React.FC<ContentHeaderProps> = ({
-  totalShowing, totalAll, currentPage, totalPages, onPageChange,
-  itemsPerPage, onItemsPerPageChange,
-  viewMode, onViewChange, sidebarOpen, onOpenSidebar,
+  totalShowing, viewMode, onViewChange, sidebarOpen, onOpenSidebar,
 }) => (
   <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 mb-6 bg-white p-3 sm:p-4 rounded-2xl border border-slate-100 shadow-sm">
 

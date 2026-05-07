@@ -7,7 +7,12 @@ const avatarColors = [
   'bg-rose-600', 'bg-amber-600', 'bg-sky-600',
 ];
 
-export const LogoAvatar = ({
+export const LogoAvatar: React.FC<{
+  name: string;
+  id: number;
+  website: string;
+  logoUrl: string;
+}> = ({
   name,
   id,
   website,
@@ -101,14 +106,8 @@ const getIndustryStyles = (ind: string) =>
   industryColors[ind] ?? 'text-slate-600 bg-slate-50 border-slate-100';
 
 /* ─── Avatar Gradients ────────────────────────────────────────────────────── */
-const gradients = [
-  'from-indigo-500 to-purple-600',
-  'from-emerald-500 to-teal-600',
-  'from-blue-500 to-indigo-600',
-  'from-rose-500 to-pink-600',
-  'from-amber-500 to-orange-600',
-];
-const getGradient = (id: number) => gradients[id % gradients.length];
+// const gradients = [...]
+// const getGradient = ...
 
 /* ─── Stat item ───────────────────────────────────────────────────────────── */
 const StatItem: React.FC<{ icon: React.ReactNode; value: string; label: string }> = ({ icon, value, label }) => (

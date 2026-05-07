@@ -161,10 +161,9 @@ const ProfileDropdown: React.FC<ProfileDropdownProps> = ({ visible, onSignOut })
 interface NavbarProps {
   sidebarOpen: boolean;
   onToggleSidebar: () => void;
-  totalCompanies: number;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ sidebarOpen, onToggleSidebar, totalCompanies }) => {
+const Navbar: React.FC<NavbarProps> = ({ sidebarOpen, onToggleSidebar }) => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [profileOpen, setProfileOpen] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);

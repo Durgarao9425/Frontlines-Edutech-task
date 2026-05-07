@@ -264,7 +264,6 @@ export default function App() {
       <Navbar
         sidebarOpen={sidebarOpen}
         onToggleSidebar={() => setSidebarOpen((o) => !o)}
-        totalCompanies={allCompanies.length}
       />
 
       <div className="flex flex-1 overflow-hidden relative">
