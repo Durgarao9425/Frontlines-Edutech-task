@@ -113,9 +113,18 @@ const CompanyDetailDrawer: React.FC<CompanyDetailDrawerProps> = ({
 
       {/* DRAWER */}
       <div
-        className={`fixed top-0 right-0 h-screen w-full max-w-2xl bg-[#f8fafc] z-[301] shadow-2xl transition-all duration-300 ease-out flex flex-col rounded-l-3xl overflow-hidden
-  ${visible ? "translate-x-0" : "translate-x-full"}`}
+        className={`fixed z-[301] bg-[#f8fafc] shadow-2xl transition-all duration-500 ease-out flex flex-col overflow-hidden
+          /* MOBILE: Bottom Sheet */
+          bottom-0 left-0 right-0 h-[85vh] rounded-t-3xl 
+          ${visible ? "translate-y-0" : "translate-y-full"}
+          
+          /* WEB & TAB: Right Side Drawer */
+          sm:top-0 sm:right-0 sm:left-auto sm:h-screen sm:w-full sm:max-w-2xl sm:rounded-l-3xl sm:rounded-t-none
+          sm:translate-y-0
+          sm:${visible ? "translate-x-0" : "translate-x-full"}
+        `}
       >
+
         {/* HEADER */}
         <div className="relative min-h-[160px] bg-gradient-to-br from-slate-950 via-indigo-950 to-violet-900 overflow-hidden">
 
@@ -126,7 +135,7 @@ const CompanyDetailDrawer: React.FC<CompanyDetailDrawerProps> = ({
           {/* Close Button */}
           <button
             onClick={handleClose}
-            className="absolute top-6 right-6 w-12 h-12 rounded-2xl bg-white/10 border border-white/10 backdrop-blur-md hover:bg-white/20 transition-all duration-300 text-white flex items-center justify-center"
+            className="absolute top-6 right-6 w-12 h-12 rounded-2xl bg-white/10 border border-white/10 backdrop-blur-md hover:bg-white/20 transition-all duration-300 text-white flex items-center justify-center z-[100]"
           >
             <svg
               className="w-5 h-5"
@@ -142,6 +151,7 @@ const CompanyDetailDrawer: React.FC<CompanyDetailDrawerProps> = ({
               />
             </svg>
           </button>
+
 
           {/* Header Content */}
           <div className="relative z-10 h-full flex items-center gap-6 px-6 pt-6 pb-6">
