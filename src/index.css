@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    @apply font-sans antialiased;
+    background: #f0f1f5;
+    color: #1e293b;
+  }
+}
+
+@layer components {
+  /* Shimmer skeleton */
+  .shimmer-bg {
+    background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  /* Card hover */
+  .company-card {
+    @apply bg-white rounded-2xl border border-slate-100 shadow-sm cursor-default
+           transition-all duration-200 hover:-translate-y-1 hover:shadow-xl
+           hover:shadow-indigo-100/50 hover:border-indigo-100;
+  }
+
+  /* Filter inputs */
+  .f-input {
+    @apply w-full px-3 py-2 text-sm bg-white border border-slate-200 rounded-lg shadow-sm
+           focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-transparent
+           transition-all duration-200 placeholder:text-slate-400 text-slate-700;
+  }
+
+  .filter-group label {
+    @apply block text-xs font-semibold text-slate-500 mb-1.5 uppercase tracking-wider;
+  }
+
+  /* Scrollbar */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #c7d2fe #f1f5f9;
+  }
+  .scrollbar-thin::-webkit-scrollbar { width: 4px; }
+  .scrollbar-thin::-webkit-scrollbar-track { background: #f1f5f9; }
+  .scrollbar-thin::-webkit-scrollbar-thumb { background: #c7d2fe; border-radius: 2px; }
+
+  /* Page hero banner */
+  .page-hero {
+    @apply relative overflow-hidden;
+    background: linear-gradient(135deg, #0d0c1a 0%, #1e1b4b 50%, #312e81 100%);
+  }
+}
+
+@layer utilities {
+  .sidebar-shadow { box-shadow: 4px 0 24px rgba(99,102,241,0.06); }
+
+  /* Grain texture overlay */
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.4;
+  }
+}
+
+/* ── Entrance animations ──────────────────────────────────────────────────── */
+@keyframes shimmer      { 0%   { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+@keyframes fadeSlideUp  { 0%   { opacity: 0; transform: translateY(16px); } 100% { opacity: 1; transform: translateY(0); } }
+@keyframes slideInLeft  { 0%   { opacity: 0; transform: translateX(-20px); } 100% { opacity: 1; transform: translateX(0); } }
+@keyframes scaleIn      { 0%   { opacity: 0; transform: scale(0.92); } 100% { opacity: 1; transform: scale(1); } }
+@keyframes heroFloat    { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-12px) rotate(3deg); } }
+@keyframes orbitSpin    { 0% { transform: rotate(0deg) translateX(60px) rotate(0deg); } 100% { transform: rotate(360deg) translateX(60px) rotate(-360deg); } }
+@keyframes gradientShift { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+
+.anim-card {
+  opacity: 0;
+  animation: fadeSlideUp 0.38s ease-out forwards;
+}
+.anim-sidebar {
+  animation: slideInLeft 0.26s ease-out forwards;
+}
+.anim-scale {
+  animation: scaleIn 0.3s ease-out forwards;
+}
+
+/* Gradient animated background for hero */
+.animated-gradient {
+  background: linear-gradient(-45deg, #0d0c1a, #1e1b4b, #312e81, #4338ca, #1e1b4b);
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease infinite;
+}
+
+/* Floating blobs */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.15;
+  animation: heroFloat 6s ease-in-out infinite;
+}
+.blob-1 { width: 300px; height: 300px; background: #6366f1; top: -100px; right: 10%; animation-delay: 0s; }
+.blob-2 { width: 200px; height: 200px; background: #a78bfa; bottom: -60px; left: 15%; animation-delay: -2s; }
+.blob-3 { width: 150px; height: 150px; background: #818cf8; top: 30%; left: 60%; animation-delay: -4s; }
